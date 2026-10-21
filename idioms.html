@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chinese Idioms Directory | ดรรชนีสำนวนจีนทั้งหมด (HSK 4-6)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c0392b;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+
+        header { background-color: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .logo span { color: var(--accent-color); font-family: 'Noto Serif SC', serif; }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+        
+        .page-header { margin-bottom: 2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; }
+        .page-header h1 { font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .page-header p { color: var(--text-muted); }
+
+        /* Jump Navigation Bar */
+        .category-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); }
+        .category-nav a { padding: 0.4rem 0.8rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 6px; text-decoration: none; color: var(--primary-color); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+        .category-nav a:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); }
+
+        /* Section Headings */
+        .group-title { font-size: 1.5rem; color: var(--primary-color); margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem; }
+        .group-title span.badge { font-size: 0.8rem; background: var(--accent-color); color: white; padding: 0.2rem 0.6rem; border-radius: 12px; }
+
+        /* Grid Layout for Idioms */
+        .idiom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+        
+        .idiom-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+        .idiom-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-color: var(--accent-color); }
+        
+        .idiom-hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.4rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.2rem; }
+        .idiom-pinyin { font-size: 0.85rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; }
+        .idiom-meaning { font-size: 0.85rem; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .idiom-tag { font-size: 0.7rem; background: #edf2f7; color: #4a5568; padding: 0.15rem 0.4rem; border-radius: 4px; display: inline-block; margin-top: 0.5rem; }
+
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; margin-top: 4rem; border-top: 1px solid var(--border-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo"><span>成语</span> Chinese Idioms Portal</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="idioms.html" style="color: var(--accent-color);">All Idioms</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="page-header">
+            <h1>All Chinese Idioms (成语大全)</h1>
+            <p>คลังรวบรวมสำนวนจีนมาตรฐาน HSK 3.0 (ระดับ 4, 5 และ 6) แยกตามกลุ่มตัวอักษร Pinyin และระดับ HSK</p>
+        </div>
+
+        <!-- แถบทางลัดสำหรับกดข้ามไปยังหมวดหมู่ที่ต้องการ -->
+        <div class="category-nav">
+            <strong>ทางลัด:</strong>
+            <a href="#hsk4">HSK 4</a>
+            <a href="#hsk5">HSK 5</a>
+            <a href="#hsk6">HSK 6</a>
+            <a href="#pinyin-a">A</a>
+            <a href="#pinyin-b">B</a>
+            <a href="#pinyin-p">P</a>
+            <a href="#pinyin-s">S</a>
+        </div>
+
+        <!-- กลุ่ม HSK 4 -->
+        <div id="hsk4">
+            <h2 class="group-title">HSK 4 Idioms <span class="badge">4 คำ</span></h2>
+            <div class="idiom-grid">
+                
+                <a href="idiom-luanqibazao.html" class="idiom-card">
+                    <div class="idiom-hanzi">乱七八糟</div>
+                    <div class="idiom-pinyin">luàn qī bā zāo</div>
+                    <div class="idiom-meaning">รกและกระจัดกระจาย, ยุ่งเหยิงไปหมด</div>
+                    <span class="idiom-tag">HSK 4</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">津津有味</div>
+                    <div class="idiom-pinyin">jīn jīn yǒu wèi</div>
+                    <div class="idiom-meaning">เอร็ดอร่อย, ฟัง/อ่านอย่างออกรสออกชาติ</div>
+                    <span class="idiom-tag">HSK 4</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">理所当然</div>
+                    <div class="idiom-pinyin">lǐ suǒ dāng rán</div>
+                    <div class="idiom-meaning">เป็นเรื่องชอบธรรม/สมควรแล้ว</div>
+                    <span class="idiom-tag">HSK 4</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">自由自在</div>
+                    <div class="idiom-pinyin">zì yóu zì zài</div>
+                    <div class="idiom-meaning">อิสระเสรี, สบายๆ ไร้พันธนาการ</div>
+                    <span class="idiom-tag">HSK 4</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- กลุ่ม HSK 5 -->
+        <div id="hsk5">
+            <h2 class="group-title">HSK 5 Idioms <span class="badge">HSK 5</span></h2>
+            <div class="idiom-grid">
+                
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">迫不及待</div>
+                    <div class="idiom-pinyin">pò bù jí dài</div>
+                    <div class="idiom-meaning">รอไม่ไหวแล้ว, ใจร้อนรีบเร่ง</div>
+                    <span class="idiom-tag">HSK 5</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">爱不释手</div>
+                    <div class="idiom-pinyin">ài bù shì shǒu</div>
+                    <div class="idiom-meaning">รัก/ชอบมากจนวางไม่ลง</div>
+                    <span class="idiom-tag">HSK 5</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">画蛇添足</div>
+                    <div class="idiom-pinyin">huà shé tiān zú</div>
+                    <div class="idiom-meaning">วาดงูเติมขา (ทำเกินจำเป็นจนเสียเรื่อง)</div>
+                    <span class="idiom-tag">HSK 5</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">胸有成竹</div>
+                    <div class="idiom-pinyin">xiōng yǒu chéng zhú</div>
+                    <div class="idiom-meaning">มีไผ่อยู่ในใจ (มั่นใจเต็มเปี่ยม/เตรียมพร้อมมาอย่างดี)</div>
+                    <span class="idiom-tag">HSK 5</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- กลุ่ม HSK 6 -->
+        <div id="hsk6">
+            <h2 class="group-title">HSK 6 Idioms <span class="badge">HSK 6</span></h2>
+            <div class="idiom-grid">
+                
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">事半功倍</div>
+                    <div class="idiom-pinyin">shì bàn gōng bèi</div>
+                    <div class="idiom-meaning">ลงแรงครึ่งเดียวได้ผลเป็นสองเท่า</div>
+                    <span class="idiom-tag">HSK 6</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">熟能生巧</div>
+                    <div class="idiom-pinyin">shú néng shēng qiǎo</div>
+                    <div class="idiom-meaning">ฝึกฝนจนชำนาญ (Practice makes perfect)</div>
+                    <span class="idiom-tag">HSK 6</span>
+                </a>
+
+                <a href="#" class="idiom-card">
+                    <div class="idiom-hanzi">守株待兔</div>
+                    <div class="idiom-pinyin">shǒu zhū dài tù</div>
+                    <div class="idiom-meaning">เฝ้าตอไม้รอกระต่าย (รอโชคชะตาโดยไม่ลงมือทำ)</div>
+                    <span class="idiom-tag">HSK 6</span>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Chinese Idioms Directory. Hosted on GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
