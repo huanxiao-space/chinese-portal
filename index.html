@@ -3,322 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chinese Idioms & Academic Resources | สารานุกรมสำนวนจีนและสื่อการสอน</title>
-    <!-- Google Fonts: Inter & Noto Serif SC สำหรับภาษาจีน -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <title>HuanXiao Chinese Idioms & Learning Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #c0392b; /* โทนแดงแบบจีนโมเดิร์น */
+            --primary-color: #1e293b;
+            --accent-color: #c0392b;
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
             --text-main: #333333;
-            --text-muted: #666666;
+            --text-muted: #64748b;
             --border-color: #e2e8f0;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
 
-        body {
-            font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
+        /* Header Navigation - Adjust for Mobile Responsive */
+        header { background-color: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .nav-container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0.8rem 1rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; /* รองรับการตัดบรรทัดเมื่อจอมือถือแคบ */
             gap: 0.5rem;
         }
+        
+        .logo { 
+            font-size: 1rem; 
+            font-weight: 700; 
+            color: var(--primary-color); 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        .logo img { height: 36px; width: auto; border-radius: 6px; object-fit: contain; }
+        .logo span { color: var(--accent-color); font-family: 'Noto Serif SC', serif; }
 
-        .logo span {
-            color: var(--accent-color);
-            font-family: 'Noto Serif SC', serif;
+        .nav-links { display: flex; gap: 1rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; padding: 0.3rem 0.6rem; border-radius: 6px; transition: all 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-color); background-color: #f1f5f9; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .logo-text { font-size: 0.9rem; max-width: 160px; line-height: 1.2; }
+            .nav-links { gap: 0.3rem; }
+            .nav-links a { font-size: 0.85rem; padding: 0.2rem 0.4rem; }
         }
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
+        /* Hero Banner */
+        .hero { background-color: #111827; color: white; padding: 3rem 1.5rem; text-align: center; }
+        .hero h1 { font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.3; }
+        .hero p { color: #9ca3af; font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.8rem auto; }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            text-align: center;
-            padding: 5rem 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .search-box {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            background: white;
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 0.9rem 1.5rem;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-        }
-
-        .search-box button {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .search-box button:hover {
-            background-color: #a93226;
-        }
+        /* Search Box */
+        .search-box { max-width: 500px; margin: 0 auto; display: flex; background: white; border-radius: 8px; overflow: hidden; }
+        .search-input { flex: 1; border: none; padding: 0.8rem 1rem; font-size: 0.95rem; outline: none; color: #1e293b; }
+        .search-btn { background: var(--accent-color); color: white; border: none; padding: 0 1.5rem; font-weight: 600; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; }
 
         /* Main Container */
-        .container {
-            max-width: 1100px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
+        .container { max-width: 1100px; margin: 2.5rem auto; padding: 0 1.5rem; }
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; }
+        .section-header h2 { font-size: 1.5rem; color: var(--primary-color); }
+        .view-all-link { color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
 
-        .section-title a {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            text-decoration: none;
-        }
+        /* Featured Cards Layout */
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); border-color: var(--accent-color); }
 
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
+        .badge-path { font-size: 0.75rem; font-weight: 700; color: #c0392b; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .card-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .card-desc { font-size: 0.88rem; color: var(--text-muted); }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .card-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-family: 'Noto Serif SC', serif;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .btn-text {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .btn-text:hover {
-            color: var(--accent-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 4rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; }
-        }
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; margin-top: 4rem; border-top: 1px solid var(--border-color); background: var(--card-bg); }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header ที่ปรับแก้ให้รองรับจอมือถือ -->
     <header>
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <!-- ใส่รูปโลโก้ของคุณอาจารย์ตรงนี้ (ปรับขนาดความสูง height="36" ให้พอดี) -->
-            <img src="Logo.png" alt="HuanXiao Logo" style="height: 36px; width: auto; border-radius: 6px; object-fit: contain;">
-            <span>成语</span> HuanXiao Chinese Idioms
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="idioms.html">All Idioms</a></li>
-        </ul>
-    </div>
-</header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="HuanXiao Logo">
+                <div class="logo-text"><span>成语</span> HuanXiao Idioms</div>
+            </a>
+            <!-- เมนู Home และ All Idioms ที่แสดงผลได้แน่นอนบนมือถือ -->
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="idioms.html">All Idioms</a></li>
+            </ul>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <h1>Chinese Idioms & Learning Portal</h1>
         <p>Look up meanings, Pinyin, origin stories, and natural examples for Chinese Chengyu.</p>
+        
+        <!-- ช่อง Search ที่กดแล้ววิ่งตรงไปที่หน้าสารบัญสำนวน idioms.html -->
         <div class="search-box">
-            <input type="text" placeholder="Search idioms, pinyin, or keywords (e.g., 龙马精神)...">
-            <button>Search</button>
+            <input type="text" class="search-input" placeholder="ค้นหาสำนวนจีน..." value="画蛇添足">
+            <a href="idioms.html" class="search-btn">Search</a>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="container" id="collections">
+    <div class="container">
         
-        <div class="section-title">
-            <span>Featured Collections</span>
-            <a href="#">View all collections →</a>
+        <div class="section-header">
+            <div>
+                <h2>Featured Collections</h2>
+            </div>
+            <!-- เชื่อมลิงก์ View all collections ไปหน้า idioms.html -->
+            <a href="idioms.html" class="view-all-link">View all idioms →</a>
         </div>
 
-        <div class="grid">
-            <!-- Card 1 -->
-            <div class="card">
-                <span class="card-tag">Beginner Path</span>
-                <h3>一马当先 (Yī mǎ dāng xiān)</h3>
-                <p>Leading the way; taking the lead in action. Practical everyday expressions with clear historical context.</p>
-                <a href="#" class="btn-text">Read story & examples →</a>
-            </div>
+        <!-- กล่องทางลัดที่เชื่อมโยงไปยังหมวดหมู่ต่างๆ บนหน้า idioms.html -->
+        <div class="featured-grid">
+            
+            <a href="idioms.html#hsk4" class="feature-card">
+                <span class="badge-path">BEGINNER PATH</span>
+                <div class="card-title">HSK 4 Idioms (พื้นฐาน)</div>
+                <div class="card-desc">รวบรวมสำนวนจีนพื้นฐานที่ใช้บ่อยในชีวิตประจำวันและการสอบ HSK 4</div>
+            </a>
 
-            <!-- Card 2 -->
-            <div class="card">
-                <span class="card-tag">Business & Strategy</span>
-                <h3>事半功倍 (Shì bàn gōng bèi)</h3>
-                <p>Get twice the result with half the effort. Essential phrases frequently used in modern academic and professional contexts.</p>
-                <a href="#" class="btn-text">Read story & examples →</a>
-            </div>
+            <a href="idioms.html#hsk5" class="feature-card">
+                <span class="badge-path">INTERMEDIATE PATH</span>
+                <div class="card-title">HSK 5 Idioms (ระดับกลาง)</div>
+                <div class="card-desc">สำนวนจีนระดับกลาง พร้อมคำแปล ประโยคตัวอย่าง และการเปรียบเทียบสำนวนไทย</div>
+            </a>
 
-            <!-- Card 3 -->
-            <div class="card">
-                <span class="card-tag">Wisdom & Success</span>
-                <h3>熟能生巧 (Shú néng shēng qiǎo)</h3>
-                <p>Practice makes perfect. Classic cultural wisdom illustrating steady effort, skill acquisition, and mastery.</p>
-                <a href="#" class="btn-text">Read story & examples →</a>
-            </div>
-        </div>
+            <a href="idioms.html#hsk6" class="feature-card">
+                <span class="badge-path">ADVANCED PATH</span>
+                <div class="card-title">HSK 6 Idioms (ระดับสูง)</div>
+                <div class="card-desc">สำนวนจีนระดับสูง คลังคำศัพท์สำหรับการอ่านวรรณกรรม การแปล และการสอบวิชาชีพ</div>
+            </a>
 
-        <div class="section-title">
-            <span>Academic & Teaching Resources</span>
-            <a href="#">Explore materials →</a>
-        </div>
-
-        <div class="grid">
-            <!-- Resource Card 1 -->
-            <div class="card">
-                <span class="card-tag">Curriculum</span>
-                <h3>Business Chinese & Translation</h3>
-                <p>Instructional materials, contrastive analysis notes, and bilingual glossaries for translation studies.</p>
-                <a href="#" class="btn-text">Access materials →</a>
-            </div>
-
-            <!-- Resource Card 2 -->
-            <div class="card">
-                <span class="card-tag">Exam Prep</span>
-                <h3>HSK & CATTI Question Banks</h3>
-                <p>Structured vocabulary lists, listening strategies, and practice test materials for advanced learners.</p>
-                <a href="#" class="btn-text">Access materials →</a>
-            </div>
         </div>
 
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 HuanXiao (欢校) - Chinese Idioms Portal. Created with ❤️ by HuanXiao. Hosted freely on GitHub Pages.</p>
     </footer>
