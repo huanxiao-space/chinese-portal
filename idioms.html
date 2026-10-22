@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Chinese Idioms Directory | ดรรชนีสำนวนจีน HSK 3.0</title>
+    <title>All Chinese Idioms Directory | HuanXiao Chinese Idioms</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,47 +14,47 @@
             --text-main: #333333;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --tag-bian: #fee2e2; /* Red tint for 贬义 */
-            --tag-bao: #dcfce7;  /* Green tint for 褒义 */
-            --tag-zhong: #f1f5f9;/* Neutral tint for 中性 */
+            --tag-bian: #fee2e2;
+            --tag-bao: #dcfce7;
+            --tag-zhong: #f1f5f9;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
 
         header { background-color: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+        .logo { font-size: 1rem; font-weight: 700; color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo img { height: 36px; width: auto; border-radius: 6px; object-fit: contain; }
         .logo span { color: var(--accent-color); font-family: 'Noto Serif SC', serif; }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; }
-        .nav-links a:hover { color: var(--accent-color); }
+        .nav-links { display: flex; gap: 1rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; padding: 0.3rem 0.6rem; border-radius: 6px; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-color); background-color: #f1f5f9; }
 
         .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
-        
         .page-header { margin-bottom: 2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; }
         .page-header h1 { font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem; }
         .page-header p { color: var(--text-muted); }
 
-        /* Jump Navigation Bar */
         .category-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; background: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); align-items: center; }
         .category-nav a { padding: 0.4rem 0.8rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 6px; text-decoration: none; color: var(--primary-color); font-weight: 600; font-size: 0.85rem; transition: all 0.2s; }
         .category-nav a:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); }
 
-        /* Section Headings */
         .group-title { font-size: 1.5rem; color: var(--primary-color); margin: 2.5rem 0 1.2rem 0; display: flex; align-items: center; gap: 0.6rem; border-left: 4px solid var(--accent-color); padding-left: 0.8rem; }
         .group-title span.badge { font-size: 0.8rem; background: var(--primary-color); color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 500; }
 
-        /* Grid Layout for Idioms */
         .idiom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
-        
-        .idiom-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+        .idiom-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; position: relative; }
         .idiom-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: var(--accent-color); }
         
-        .card-img { width: 100%; height: 140px; object-fit: cover; background-color: #e2e8f0; }
         .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; }
+        
+        /* Header ของตัวอักษรจีน + ปุ่มเสียง */
+        .hanzi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem; }
+        .idiom-hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); }
+        .audio-btn { background: #f1f5f9; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: background 0.2s, transform 0.1s; }
+        .audio-btn:hover { background: #e2e8f0; transform: scale(1.1); }
 
-        .idiom-hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.1rem; }
         .idiom-pinyin { font-size: 0.85rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.6rem; }
         .idiom-meaning { font-size: 0.9rem; color: var(--text-main); font-weight: 500; margin-bottom: 0.4rem; }
         .idiom-thai-eq { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem; font-style: italic; }
@@ -71,31 +71,29 @@
 <body>
 
     <header>
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <!-- ใส่รูปโลโก้ของคุณอาจารย์ตรงนี้ (ปรับขนาดความสูง height="36" ให้พอดี) -->
-            <img src="Logo.png" alt="HuanXiao Logo" style="height: 36px; width: auto; border-radius: 6px; object-fit: contain;">
-            <span>成语</span> HuanXiao Chinese Idioms
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="idioms.html">All Idioms</a></li>
-        </ul>
-    </div>
-</header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="Logo.png" alt="HuanXiao Logo">
+                <div><span>成语</span> HuanXiao Idioms</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="idioms.html" class="active">All Idioms</a></li>
+            </ul>
+        </div>
+    </header>
 
     <div class="container">
-        
         <div class="page-header">
             <h1>All Chinese Idioms (成语大全)</h1>
-            <p>คลังรวบรวม 20 สำนวนจีนนำร่อง มาตรฐาน HSK 3.0 (ระดับ 4-6) พร้อมเทียบเคียงสำนวนไทย</p>
+            <p>คลังรวบรวม 20 สำนวนจีนนำร่อง มาตรฐาน HSK 3.0 พร้อมฟังเสียงอ่านภาษาจีนกลางมาตรฐาน 🔊</p>
         </div>
 
         <div class="category-nav">
-            <strong style="font-size: 0.9rem; color: var(--primary-color);">หมวดหมู่:</strong>
-            <a href="#hsk4">HSK 4 (4 คำ)</a>
-            <a href="#hsk5">HSK 5 (8 คำ)</a>
-            <a href="#hsk6">HSK 6 (8 คำ)</a>
+            <strong>หมวดหมู่:</strong>
+            <a href="#hsk4">HSK 4</a>
+            <a href="#hsk5">HSK 5</a>
+            <a href="#hsk6">HSK 6</a>
         </div>
 
         <!-- ==================== HSK 4 ==================== -->
@@ -103,61 +101,69 @@
             <h2 class="group-title">HSK 4 Idioms <span class="badge">4 คำ</span></h2>
             <div class="idiom-grid">
                 
-                <a href="idiom-luanqibazao.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?w=500&q=80" class="card-img" alt="乱七八糟">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">乱七八糟</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-luanqibazao.html" class="idiom-hanzi">乱七八糟</a>
+                            <button class="audio-btn" onclick="playAudio('乱七八糟')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">luàn qī bā zāo</div>
                         <div class="idiom-meaning">รกและกระจัดกระจาย, ยุ่งเหยิงไปหมด</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: รกเหมือนรังหนู / ยุ่งเหยิงเป็นยองใย</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: รกเป็นรังหนู / ยุ่งเป็นยุงตีกัน</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 4</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
+                            <span class="tag-tone-bian">贬义 · เชิงลบ</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="idiom-jinjinyouwei.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" class="card-img" alt="津津有味">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">津津有味</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-jinjinyouwei.html" class="idiom-hanzi">津津有味</a>
+                            <button class="audio-btn" onclick="playAudio('津津有味')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">jīn jīn yǒu wèi</div>
                         <div class="idiom-meaning">เอร็ดอร่อย, ฟัง/อ่านอย่างออกรสออกชาติ</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: กินอย่างออกรส / ฟังเพลินจนลืมเวลา</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: ฟังเพลินออกรสออกชาติ</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 4</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
+                            <span class="tag-tone-bao">褒义 · เชิงบวก</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="idiom-lisuodangran.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80" class="card-img" alt="理所当然">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">理所当然</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-lisuodangran.html" class="idiom-hanzi">理所当然</a>
+                            <button class="audio-btn" onclick="playAudio('理所当然')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">lǐ suǒ dāng rán</div>
-                        <div class="idiom-meaning">เป็นเรื่องชอบธรรม/สมควรแล้ว, แน่นอนอยู่แล้ว</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: เป็นธรรมดา / เป็นเรื่องที่สมควรแล้ว</div>
+                        <div class="idiom-meaning">เป็นเรื่องชอบธรรม/สมควรแล้ว</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: เป็นเรื่องธรรมดาที่สมควรแล้ว</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 4</span>
-                            <span class="tag-tone-zhong">中性 · ความหมายกลางๆ</span>
+                            <span class="tag-tone-zhong">中性 · เป็นกลาง</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="idiom-ziyouzizai.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" class="card-img" alt="自由自在">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">自由自在</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-ziyouzizai.html" class="idiom-hanzi">自由自在</a>
+                            <button class="audio-btn" onclick="playAudio('自由自在')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">zì yóu zì zài</div>
                         <div class="idiom-meaning">อิสระเสรี, สบายๆ ไร้พันธนาการ</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: นกน้อยในกรงทอง (ตรงข้าม) / ลอยชายสบายใจ</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: อิสระเสรี / อยู่อย่างสบายใจ</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 4</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
+                            <span class="tag-tone-bao">褒义 · เชิงบวก</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
             </div>
         </div>
@@ -167,237 +173,69 @@
             <h2 class="group-title">HSK 5 Idioms <span class="badge">8 คำ</span></h2>
             <div class="idiom-grid">
 
-                <a href="idiom-huashetianzui.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1531386151447-fd762e7a036e?w=500&q=80" class="card-img" alt="画蛇添足">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">画蛇添足</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-huashetianzui.html" class="idiom-hanzi">画蛇添足</a>
+                            <button class="audio-btn" onclick="playAudio('画蛇添足')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">huà shé tiān zú</div>
                         <div class="idiom-meaning">ทำสิ่งที่เกินความจำเป็นจนเสียเรื่อง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: ตั๊กแตนผูกโบ / น้ำท่วมทุ่งผักบุ้งโหรงเหรง</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: ตั๊กแตนผูกโบ / ทำเกินจำเป็น</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
+                            <span class="tag-tone-bian">贬义 · เชิงลบ</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="idiom-pobujidai.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=500&q=80" class="card-img" alt="迫不及待">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">迫不及待</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-pobujidai.html" class="idiom-hanzi">迫不及待</a>
+                            <button class="audio-btn" onclick="playAudio('迫不及待')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">pò bù jí dài</div>
                         <div class="idiom-meaning">รอไม่ไหวแล้ว, ใจร้อนรีบเร่ง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: ใจร้อนรน / แทบจะรอไม่ไหว</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: ใจจดใจจ่อแทบรอไม่ไหว</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-zhong">中性 · ความหมายกลางๆ</span>
+                            <span class="tag-tone-zhong">中性 · เป็นกลาง</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="idiom-aibushishou.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80" class="card-img" alt="爱不释手">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">爱不释手</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-aibushishou.html" class="idiom-hanzi">爱不释手</a>
+                            <button class="audio-btn" onclick="playAudio('爱不释手')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">ài bù shì shǒu</div>
                         <div class="idiom-meaning">รัก/ชอบมากจนวางไม่ลง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: หวงแหนประหนึ่งไข่ในหิน / หลงใหลจนวางไม่ลง</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: หลงใหลจนวางไม่ลง</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
+                            <span class="tag-tone-bao">褒义 · เชิงบวก</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="idiom-xiongyouchengzhu.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1528164344705-47542687990d?w=500&q=80" class="card-img" alt="胸有成竹">
+                <div class="idiom-card">
                     <div class="card-body">
-                        <div class="idiom-hanzi">胸有成竹</div>
+                        <div class="hanzi-header">
+                            <a href="idiom-xiongyouchengzhu.html" class="idiom-hanzi">胸有成竹</a>
+                            <button class="audio-btn" onclick="playAudio('胸有成竹')" title="กดฟังเสียง">🔊</button>
+                        </div>
                         <div class="idiom-pinyin">xiōng yǒu chéng zhú</div>
                         <div class="idiom-meaning">มั่นใจเต็มเปี่ยม, เตรียมพร้อมมาอย่างดี</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: รู้อยู่แก่ใจ / มั่นใจร้อยเปอร์เซ็นต์</div>
+                        <div class="idiom-thai-eq">สำนวนไทย: วางแผนไว้ในใจอย่างดีแล้ว</div>
                         <div class="card-footer">
                             <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
+                            <span class="tag-tone-bao">褒义 · เชิงบวก</span>
                         </div>
                     </div>
-                </a>
-
-                <a href="idiom-momowuwen.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80" class="card-img" alt="默默无闻">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">默默无闻</div>
-                        <div class="idiom-pinyin">mò mò wú wén</div>
-                        <div class="idiom-meaning">เงียบๆ ไม่มีใครรู้จัก, ไม่โด่งดัง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: คมในฝาง / ปิดทองหลังพระ</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-zhong">中性 · ความหมายกลางๆ</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-shunlichengzhang.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80" class="card-img" alt="顺理成章">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">顺理成章</div>
-                        <div class="idiom-pinyin">shùn lǐ chéng zhāng</div>
-                        <div class="idiom-meaning">สมเหตุสมผล, สำเร็จได้เองตามธรรมชาติ</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: เป็นไปตามคลองธรรม / น้ำซึมบ่อทราย</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-saiwengshima.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=500&q=80" class="card-img" alt="塞翁失马">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">塞翁失马</div>
-                        <div class="idiom-pinyin">sài wēng shī mǎ</div>
-                        <div class="idiom-meaning">เสียลาภอาจได้โชค (ในโชคร้ายมีโชคดี)</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: ชั่ว ๗ ที ดี ๗ หน / ในวิกฤตมียกเว้น</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-zhong">中性 · คติเตือนใจ</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-bantuerfei.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1499209974431-9dac3ada00d7?w=500&q=80" class="card-img" alt="半途而废">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">半途而废</div>
-                        <div class="idiom-pinyin">bàn tú ér fèi</div>
-                        <div class="idiom-meaning">ล้มเลิกกลางคัน, ทำงานไม่ตลอดรอดฝั่ง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: เหยียบขี้ไก่ไม่ลอย / จับปลาสองมือ</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 5</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-
-        <!-- ==================== HSK 6 ==================== -->
-        <div id="hsk6">
-            <h2 class="group-title">HSK 6 Idioms <span class="badge">8 คำ</span></h2>
-            <div class="idiom-grid">
-
-                <a href="idiom-shibangongbei.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" class="card-img" alt="事半功倍">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">事半功倍</div>
-                        <div class="idiom-pinyin">shì bàn gōng bèi</div>
-                        <div class="idiom-meaning">ลงแรงครึ่งเดียวได้ผลเป็นสองเท่า</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: ยิงปืนนัดเดียวได้นกสองตัว</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-shibeigongban.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&q=80" class="card-img" alt="事倍功半">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">事倍功半</div>
-                        <div class="idiom-pinyin">shì bèi gōng bàn</div>
-                        <div class="idiom-meaning">ลงแรงคูณสองแต่ได้ผลครึ่งเดียว</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: ขี่ช้างจับตั๊กแตน / เหนื่อยฟรี</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-shunengshengqiao.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&q=80" class="card-img" alt="熟能生巧">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">熟能生巧</div>
-                        <div class="idiom-pinyin">shú néng shēng qiǎo</div>
-                        <div class="idiom-meaning">ฝึกฝนจนชำนาญ (Practice makes perfect)</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: พรสวรรค์หรือจะสู้พรแสวง / สิบปากว่าไม่เท่าตาเห็น</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-zixiangmaodun.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=500&q=80" class="card-img" alt="自相矛盾">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">自相矛盾</div>
-                        <div class="idiom-pinyin">zì xiāng máo dùn</div>
-                        <div class="idiom-meaning">ขัดแย้งในตัวเอง, พูดอย่างทำอย่าง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: ขัดขาตัวเอง / มือถือศีลปากถือศีล</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-shouzhudaitu.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80" class="card-img" alt="守株待兔">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">守株待兔</div>
-                        <div class="idiom-pinyin">shǒu zhū dài tù</div>
-                        <div class="idiom-meaning">เฝ้าตอไม้รอกระต่าย (รอโชคโดยไม่ลงมือทำ)</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: นอนรอส้มหล่น / งอมือกุมเท้า</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-jingyiqujing.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80" class="card-img" alt="精益求精">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">精益求精</div>
-                        <div class="idiom-pinyin">jīng yì qiú jīng</div>
-                        <div class="idiom-meaning">ดีแล้วยังอยากให้ดียิ่งขึ้นไปอีก</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: เหนือฟ้ายังมีฟ้า / ไม่หยุดพัฒนา</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bao">褒义 · ความหมายเชิงบวก</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-bukesiyi.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&q=80" class="card-img" alt="不可思议">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">不可思议</div>
-                        <div class="idiom-pinyin">bù kě sī yì</div>
-                        <div class="idiom-meaning">เหลือเชื่อ, ไม่น่าเชื่อว่าจะเกิดขึ้นได้</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: เหนือความคาดหมาย / ปาฏิหาริย์</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-zhong">中性 · ความหมายกลางๆ</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="idiom-qirenyoutian.html" class="idiom-card">
-                    <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=500&q=80" class="card-img" alt="杞人忧天">
-                    <div class="card-body">
-                        <div class="idiom-hanzi">杞人忧天</div>
-                        <div class="idiom-pinyin">qǐ rén yōu tiān</div>
-                        <div class="idiom-meaning">วิตกกังวลในเรื่องที่ไม่เป็นเรื่อง / กังวลไปเอง</div>
-                        <div class="idiom-thai-eq">สำนวนไทย: กระต่ายตื่นตระหนก / ตีตนไปก่อนไข้</div>
-                        <div class="card-footer">
-                            <span class="tag-hsk">HSK 6</span>
-                            <span class="tag-tone-bian">贬义 · ความหมายเชิงลบ</span>
-                        </div>
-                    </div>
-                </a>
+                </div>
 
             </div>
         </div>
@@ -407,6 +245,24 @@
     <footer>
         <p>&copy; 2026 HuanXiao (欢校) - Chinese Idioms Portal. Created with ❤️ by HuanXiao. Hosted freely on GitHub Pages.</p>
     </footer>
+
+    <!-- สคริปต์ควบคุมการออกเสียงภาษาจีนกลาง -->
+    <script>
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                // ยกเลิกเสียงเดิมที่กำลังเล่นอยู่ (ถ้ามี)
+                window.speechSynthesis.cancel();
+                
+                var msg = new SpeechSynthesisUtterance();
+                msg.text = text;
+                msg.lang = 'zh-CN'; // ตั้งค่าเป็นภาษาจีนกลาง
+                msg.rate = 0.85;    // ความเร็วเสียงพอดีๆ เหมาะแก่การฝึกฟัง
+                window.speechSynthesis.speak(msg);
+            } else {
+                alert("อุปกรณ์ของคุณไม่รองรับระบบออกเสียงเบราว์เซอร์");
+            }
+        }
+    </script>
 
 </body>
 </html>
