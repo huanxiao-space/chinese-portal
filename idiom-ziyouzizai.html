@@ -74,5 +74,22 @@
     <footer>
         <p>&copy; 2026 HuanXiao (欢校) - Chinese Idioms Portal. Created with ❤️ by HuanXiao. Hosted freely on GitHub Pages.</p>
     </footer>
+
+    <!-- สคริปต์ควบคุมระบบออกเสียง -->
+    <script>
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // ล้างคิวเสียงเก่า
+                var msg = new SpeechSynthesisUtterance();
+                msg.text = text;
+                msg.lang = 'zh-CN';
+                msg.rate = 0.85; // ความเร็วมาตรฐานสำหรับฝึกเรียน
+                window.speechSynthesis.speak(msg);
+            } else {
+                alert("เบราว์เซอร์บนอุปกรณ์ของคุณไม่รองรับการออกเสียงแบบอัตโนมัติ");
+            }
+        }
+    </script>
+
 </body>
 </html>
